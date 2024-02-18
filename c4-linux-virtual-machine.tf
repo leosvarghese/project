@@ -23,10 +23,6 @@ resource "azurerm_linux_virtual_machine" "mylinuxvm" {
     version   = "latest"
   }
   provisioner "local-exec" {
-    command = "chmod 600 linuxmachinekey.pem"
-  }
-
-  provisioner "local-exec" {
     command     = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --private-key ${path.module}/ssh-keys/terraform-azure.pem -i playbook.yml"
     working_dir = "${path.module}/ansible"
   }
