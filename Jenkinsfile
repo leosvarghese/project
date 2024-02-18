@@ -11,12 +11,14 @@ pipeline {
         }
         stage ('Terraform init') {
             steps {
+                withCredentials([azureServicePrincipal('15b2b567-05be-40a5-b4e7-0dd236cffbf8')]) 
                 sh 'terraform init'
             }
         }
         stage ('Terraform apply') {
             steps {
-                sh 'terraform apply --auto-approve'
+                withCredentials([azureServicePrincipal('15b2b567-05be-40a5-b4e7-0dd236cffbf8')]) 
+                sh 'terraform apply -auto-approve'
             }
         }
     }
