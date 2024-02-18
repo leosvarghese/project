@@ -4,7 +4,7 @@ pipeline {
         terraform 'terraform'
     }
     environment {
-        MY_CRED = credentials('15b2b567-05be-40a5-b4e7-0dd236cffbf8')
+        MY_CRED = credentials('test')
     }
     stages{
         stage ('Github Checkout') {
