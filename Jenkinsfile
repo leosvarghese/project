@@ -19,12 +19,12 @@ pipeline {
             }
         stage ('Terraform init') {
             steps {
-                sh sudo 'terraform init'
+                sh 'terraform init'
             }
         }
         stage ('Terraform apply') {
             steps {
-                sh sudo 'terraform apply -auto-approve'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
