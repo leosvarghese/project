@@ -28,7 +28,7 @@ resource "azurerm_linux_virtual_machine" "mylinuxvm" {
   }
 
   provisioner "local-exec" {
-    command     = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u leos --private-key ${path.module}/ssh-keys/terraform-azure.pem -i '${azurerm_linux_virtual_machine.mylinuxvm.public_ip_address},' playbook.yml"
+    command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u leos --private-key ${path.module}/ssh-keys/terraform-azure.pem -i '${azurerm_linux_virtual_machine.mylinuxvm.public_ip_address},' ansible/playbook.yml"
     working_dir = "${path.module}/ansible"
   }
 }
